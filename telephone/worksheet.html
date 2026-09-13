@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Telephone Website worksheet</title>
+<link rel="stylesheet" href="../assets/ah.css">
+<style>
+@page{size:letter;margin:.5in}
+body{background:#fff}
+.sheet{max-width:7.5in;margin:0 auto;padding:24px 18px;font-family:var(--ah-sans);color:var(--foreground)}
+.sheet header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--foreground);padding-bottom:8px;margin-bottom:14px}
+.sheet h1{font-size:22px;letter-spacing:-.02em;margin:0}
+.sheet .mono{font-family:var(--ah-mono);font-size:11px;color:var(--ah-fg-label)}
+.box{border:1px solid var(--foreground);border-radius:6px;padding:8px 10px;margin:0 0 10px;break-inside:avoid}
+.box .l{font-family:var(--ah-mono);font-size:10.5px;font-weight:500;color:var(--ah-fg-label);margin:0 0 4px}
+.lines{background:repeating-linear-gradient(to bottom,transparent 0 23px,#14161a33 23px 24px);height:48px}
+.lines.tall{height:96px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.swatches{display:flex;gap:10px}
+.swatches div{flex:1;height:44px;border:1px dashed #14161a66;border-radius:4px}
+.circle{font-size:13px;line-height:1.9;color:var(--ah-fg-body)}
+.wire{height:3.2in;background-image:linear-gradient(#14161a14 1px,transparent 1px),linear-gradient(90deg,#14161a14 1px,transparent 1px);background-size:16px 16px}
+.wire.small{height:2.2in}
+.print{position:fixed;top:12px;right:12px}
+@media print{.print{display:none}.sheet{padding:0}}
+</style></head><body>
+<a class="ah-btn print" href="#" onclick="print();return false">Print this sheet</a>
+<div class="sheet">
+<header><h1>The Telephone Website</h1><span class="mono">worksheet · fill it in by hand · then give it away</span></header>
+<div class="grid2">
+  <div class="box"><p class="l">01 · Name of the site</p><div class="lines" style="height:24px"></div></div>
+  <div class="box"><p class="l">02 · Who is it for</p><div class="lines" style="height:24px"></div></div>
+</div>
+<div class="box"><p class="l">03 · What it is, in one sentence</p><div class="lines"></div></div>
+<div class="grid2">
+  <div class="box"><p class="l">04 · Three colors (fill the boxes, or name them)</p><div class="swatches"><div></div><div></div><div></div></div></div>
+  <div class="box"><p class="l">05 · Font mood (circle)</p><div class="circle">serious · playful · loud · quiet<br>old · new · handmade · machine</div></div>
+</div>
+<div class="grid2">
+  <div class="box"><p class="l">06 · Pages (one per line)</p><div class="lines tall"></div></div>
+  <div class="box"><p class="l">07 · One thing that must be on it · one thing that must never be on it</p><div class="lines tall"></div></div>
+</div>
+<div class="box"><p class="l">08 · Draw the homepage. Label the parts.</p><div class="wire"></div></div>
+<div class="box"><p class="l">09 · Draw one inner page. Say which one.</p><div class="wire small"></div></div>
+<p class="mono">Done? Fold it once. Hand it to someone you did not sit next to. Get one back.</p>
+</div>
+</body></html>

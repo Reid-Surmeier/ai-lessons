@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Telephone Website</title>
+<meta name="description" content="Draw a website on paper, hand it to a stranger, and watch an agent build what they read.">
+<link rel="stylesheet" href="../assets/ah.css">
+</head><body>
+<header class="ah-header">
+  <a class="ah-brand" href="../"><span class="mark"></span><span><span class="mono">AI</span> Lessons</span></a>
+  <nav class="ah-nav" aria-label="Primary"><a href="../">Lessons</a><a href="worksheet.html">Worksheet</a><a href="https://github.com/Reid-Surmeier/ai-lessons">Source</a></nav>
+</header>
+
+<div class="ah-shell"><div class="ah-grid">
+<article class="ah-article">
+  <p class="ah-kicker"><span>01 / AI Lessons</span><span class="sep">·</span><span>20 min read</span><span class="sep">·</span><span>Updated Sep 13, 2026</span></p>
+  <h1 class="ah-h1"><span class="thumb">☎</span><span>The Telephone Website</span></h1>
+  <p class="ah-sub">Draw a website on paper. Hand it to a stranger. Watch an agent build what they read.</p>
+  <p class="ah-byline"><span class="avatar"></span>Reid Surmeier</p>
+
+<div class="ah-prose">
+
+<h2 id="what-you-will-do"><a href="#what-you-will-do">What you'll do</a></h2>
+<p>Everyone fills in a one-page worksheet by hand: a website that does not exist yet, its pages, its colors, a drawing of its homepage. Then the sheets get swapped. You end up holding someone else's site, and they end up holding yours.</p>
+<p>You open a coding agent called <strong>Codex</strong> and type <code>$telephone</code>. The agent interviews you about the sheet, in rounds, until nothing is left to guess. Every time the paper has no answer, you say so and guess out loud. The agent builds the site, publishes it to a real address on GitHub Pages, and hands back the link plus the list of every guess you made.</p>
+<p>The gap between what the author drew and what got built is the point. It is the same gap that opens every time you describe something to an agent, and this lesson makes it visible.</p>
+
+<h2 id="before-class"><a href="#before-class">Before class: two accounts</a></h2>
+<p>The setup wizard below walks you through both, but they need an email you can check, so do them where you can read your mail.</p>
+<div class="ah-table"><div class="scroll"><table>
+<thead><tr><th>Account</th><th>Why</th><th>Cost</th></tr></thead>
+<tbody>
+<tr><td><a href="https://github.com/signup">GitHub</a></td><td>Hosts your finished site for free. Your username becomes part of the address, so keep it short.</td><td>Free</td></tr>
+<tr><td><a href="https://chatgpt.com/">ChatGPT</a></td><td>Codex signs in with it. OpenAI's pricing page lists Codex in the CLI on the Plus plan and up. It does not confirm the Free plan works for the CLI, so if sign-in fails on Free, the fix is Plus.</td><td>Plus is $20/month</td></tr>
+</tbody></table></div></div>
+
+<h2 id="set-up"><a href="#set-up">Set up your computer</a></h2>
+<p>One script does the whole setup and tells you what to click at each step. It installs four tools, signs you in twice, and installs the skills. Stop it any time with <kbd>Ctrl</kbd>+<kbd>C</kbd>; re-running skips what is already done.</p>
+<div class="ah-tabs" role="tablist"><button role="tab" data-os="mac">macOS</button><button role="tab" data-os="windows">Windows</button></div>
+
+<div data-os-panel="mac">
+<h3>Open Terminal</h3>
+<p>Press <kbd>⌘</kbd>+<kbd>Space</kbd>, type <strong>Terminal</strong>, press <kbd>Return</kbd>. A window with a blinking cursor appears. Anything you paste there runs when you press <kbd>Return</kbd>.</p>
+<h3>Download and run the wizard</h3>
+<p>Copy this line, paste it into Terminal, press <kbd>Return</kbd>.</p>
+<div class="ah-cmd"><span class="dollar">$</span><code>curl -fsSL https://ai.reidsurmeier.wtf/telephone/setup.sh -o setup.sh && bash setup.sh</code><button type="button" aria-label="Copy"></button></div>
+<p class="ah-cmd-note">The first part downloads the script to a file named <code>setup.sh</code>. The second part runs it. If the Mac asks for your password, that is Homebrew installing tools; type it and press <kbd>Return</kbd>. Nothing shows while you type a password. That is normal.</p>
+</div>
+
+<div data-os-panel="windows" hidden>
+<h3>Open PowerShell</h3>
+<p>Press the <kbd>Windows</kbd> key, type <strong>PowerShell</strong>, press <kbd>Enter</kbd>. A blue or black window with a blinking cursor appears. Anything you paste there runs when you press <kbd>Enter</kbd>. Windows 11 is recommended; Windows 10 works but is best-effort.</p>
+<h3>Download and run the wizard</h3>
+<p>Copy this line, paste it into PowerShell, press <kbd>Enter</kbd>.</p>
+<div class="ah-cmd"><span class="dollar">&gt;</span><code>irm https://ai.reidsurmeier.wtf/telephone/setup.ps1 -OutFile setup.ps1; powershell -ExecutionPolicy Bypass -File .\setup.ps1</code><button type="button" aria-label="Copy"></button></div>
+<p class="ah-cmd-note">The first part downloads the script to a file named <code>setup.ps1</code>. The second part runs it. Windows may show a blue "User Account Control" box while tools install; click Yes. If Codex offers to set up its Windows sandbox and asks for admin approval, say yes.</p>
+</div>
+
+<h3>What the wizard does, stage by stage</h3>
+<div class="ah-table"><div class="scroll"><table>
+<thead><tr><th>Stage</th><th>What happens</th><th>You do</th></tr></thead>
+<tbody>
+<tr><td>1 · GitHub account</td><td>Opens the signup page if you need one.</td><td>Sign up, verify the email, type your username.</td></tr>
+<tr><td>2 · Tools</td><td>Installs git, the GitHub CLI, and Node. Mac gets Homebrew first.</td><td>Type your name and email once for git.</td></tr>
+<tr><td>3 · Codex</td><td>Installs Codex with OpenAI's installer.</td><td>Nothing.</td></tr>
+<tr><td>4 · Sign in to Codex</td><td>Opens a browser window.</td><td>Choose "Sign in with ChatGPT" and approve.</td></tr>
+<tr><td>5 · GitHub token</td><td>Opens the token page.</td><td>Follow the on-screen clicks, paste the token. See below.</td></tr>
+<tr><td>6 · Skills</td><td>Installs Matt Pocock's skills and this lesson's skill.</td><td>Nothing.</td></tr>
+<tr><td>7 · Check</td><td>Green ticks for every tool, the sign-in, and the three skills.</td><td>If anything is red, re-run the wizard.</td></tr>
+</tbody></table></div></div>
+
+<h2 id="token"><a href="#token">The GitHub token</a></h2>
+<p>The agent will create a repository and switch on GitHub Pages for you. GitHub lets you mint a token that allows exactly that and nothing else, and that dies after 30 days. The wizard opens the page; here is what it asks you to set.</p>
+<div class="ah-table"><div class="scroll"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Where</td><td>Profile picture → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</td></tr>
+<tr><td>Token name</td><td><code>telephone-lesson</code></td></tr>
+<tr><td>Expiration</td><td>30 days</td></tr>
+<tr><td>Repository access</td><td>All repositories</td></tr>
+<tr><td>Repository permissions</td><td><strong>Administration</strong>, <strong>Contents</strong>, <strong>Pages</strong>: each set to Read and write. Metadata switches on by itself.</td></tr>
+<tr><td>Then</td><td>Generate token. Copy it. Paste it into the wizard. Nothing appears while you paste; press <kbd>Return</kbd>.</td></tr>
+</tbody></table></div></div>
+<p>The token is stored by the GitHub CLI on your machine, never in a file you will see. Treat it like a password: if it ever ends up in a chat or a screenshot, delete it on the same page and make a new one.</p>
+
+<h2 id="check"><a href="#check">Check it worked</a></h2>
+<p>Open a fresh Terminal or PowerShell and try these. Each should answer, not complain.</p>
+<div class="ah-table"><div class="scroll"><table>
+<thead><tr><th>Type</th><th>Expect</th></tr></thead>
+<tbody>
+<tr><td><code>codex --version</code></td><td>A version number.</td></tr>
+<tr><td><code>gh auth status</code></td><td>"Logged in to github.com account <em>you</em>".</td></tr>
+<tr><td><code>codex</code> then <code>/skills</code></td><td>A list that includes <code>telephone</code>, <code>grill-me</code>, and <code>grilling</code>. Type <code>/quit</code> to leave.</td></tr>
+</tbody></table></div></div>
+
+<h2 id="worksheet"><a href="#worksheet">The worksheet</a></h2>
+<p>Print it, or draw the same boxes on any sheet. Fill it in by hand, in pen, in about ten minutes. It asks for nine things: the site's name, who it is for, one sentence on what it is, three colors, a font mood, the list of pages, one thing that must be on it and one that must never be, a drawing of the homepage, and a drawing of one inner page.</p>
+<a class="ah-btn" href="worksheet.html">Open the worksheet</a>
+<p style="margin-top:20px">Draw more than you write. The agent never sees the paper. Everything reaches it through the person holding your sheet, so a labeled box beats a paragraph.</p>
+
+<h2 id="the-swap"><a href="#the-swap">The swap</a></h2>
+<p>Fold your sheet once. Hand it to someone you did not sit next to. Take one back. From this moment the rules are:</p>
+<ul>
+<li>The author is not available. Do not walk over and ask.</li>
+<li>You answer the agent from the paper. When the paper has no answer, you still answer, but you start with <code>guess:</code>.</li>
+<li>You build their site, not the site you would have made. Your own ideas are guesses too.</li>
+</ul>
+
+<h2 id="build"><a href="#build">Build it</a></h2>
+<p>Make a folder for today, open the agent in it, and start the lesson skill.</p>
+<div data-os-panel="mac">
+<div class="ah-cmd"><span class="dollar">$</span><code>mkdir -p ~/telephone && cd ~/telephone && codex</code><button type="button" aria-label="Copy"></button></div>
+</div>
+<div data-os-panel="windows" hidden>
+<div class="ah-cmd"><span class="dollar">&gt;</span><code>mkdir ~\telephone -Force; cd ~\telephone; codex</code><button type="button" aria-label="Copy"></button></div>
+</div>
+<p class="ah-cmd-note">Codex opens as a chat inside the terminal. Type the line below and press <kbd>Return</kbd>.</p>
+<div class="ah-cmd"><span class="dollar">›</span><code>$telephone</code><button type="button" aria-label="Copy"></button></div>
+<p>What happens next, in order:</p>
+<ol>
+<li><strong>Check.</strong> The agent confirms GitHub is signed in and the skills are present, then asks for the site's name from the paper.</li>
+<li><strong>Grill.</strong> This is the <code>grill-me</code> skill at work. It asks numbered questions in rounds, each with a recommended answer. Answer every question in the round from the paper, or with <code>guess:</code>. It keeps going until nothing is left open. Expect three to five rounds.</li>
+<li><strong>Brief.</strong> It writes two files: <code>BRIEF.md</code>, every settled decision, and <code>GUESSES.md</code>, every guess. It asks once whether it missed anything on the paper.</li>
+<li><strong>Build.</strong> Plain HTML and CSS, the pages the paper listed, the colors it named, the layout it drew. It opens the result so you can compare it to the sheet.</li>
+<li><strong>Publish.</strong> It creates the repository under your GitHub account, pushes, switches on Pages, and waits until the address answers. Then it prints the link and the guesses.</li>
+</ol>
+<p>Keep the paper and the link together. That pair is what you bring to the room.</p>
+
+<h2 id="common-questions"><a href="#common-questions">Common questions</a></h2>
+<h3>The wizard says a tool is "not found" right after installing it</h3>
+<p>New tools register with the terminal only when it opens. Close the window, open a new one, run the wizard again. It skips finished stages.</p>
+<h3>Codex sign-in fails on a Free ChatGPT account</h3>
+<p>OpenAI's pricing page names the CLI under Plus. Upgrade, or sign in with an API key if the instructor hands one out.</p>
+<h3>The agent asks me something the paper does not answer</h3>
+<p>Answer anyway, starting with <code>guess:</code>. That is the game. A guess you log is data; a guess you hide is a bug.</p>
+<h3>It asks too many questions</h3>
+<p>Answer all of them. The interview stops on its own when the design has no open branches. Short answers are fine.</p>
+<h3>The link shows a 404</h3>
+<p>GitHub Pages takes about a minute to build the first time. The agent waits for it; if you checked early, reload.</p>
+<h3>Can I improve the site after?</h3>
+<p>After the presentation, yes. Before it, no. The point is the fidelity of one pass through one stranger.</p>
+
+<h2 id="its-working-if"><a href="#its-working-if">It's working if</a></h2>
+<ul>
+<li>The agent asked questions in numbered rounds before writing any code.</li>
+<li>Your <code>GUESSES.md</code> has entries, and each one is something the paper really did not say.</li>
+<li>The live address opens on a phone and shows the pages the paper listed, in the colors it named.</li>
+<li>The thing that "must never be on it" is not on it.</li>
+</ul>
+
+<aside class="ah-callout">
+  <span class="ah-label primary" style="margin:0">AI Lessons · Next</span>
+  <h3>Orca: many agents, many folders, one project.</h3>
+  <p>Lesson 02 takes the same tools and adds Orca, which manages a worktree per task so several agents can work on one repository without stepping on each other. Coming soon.</p>
+</aside>
+
+</div>
+</article>
+
+<aside class="ah-aside"><div>
+  <p class="ah-label">On this page</p>
+  <ul>
+    <li><a href="#what-you-will-do">What you'll do</a></li>
+    <li><a href="#before-class">Before class</a></li>
+    <li><a href="#set-up">Set up your computer</a></li>
+    <li><a href="#token">The GitHub token</a></li>
+    <li><a href="#check">Check it worked</a></li>
+    <li><a href="#worksheet">The worksheet</a></li>
+    <li><a href="#the-swap">The swap</a></li>
+    <li><a href="#build">Build it</a></li>
+    <li><a href="#common-questions">Common questions</a></li>
+    <li><a href="#its-working-if">It's working if</a></li>
+  </ul>
+</div></aside>
+</div></div>
+
+<section class="ah-band" aria-label="Install this skill"><div class="ah-band-inner">
+  <p class="ah-label">Install this lesson's skill</p>
+  <div class="ah-cmd"><span class="dollar">$</span><code>npx skills@latest add Reid-Surmeier/ai-lessons -a codex -g</code><button type="button" aria-label="Copy"></button></div>
+  <p class="ah-cmd-note">Then type <code>$telephone</code> in Codex. The setup wizard runs this for you; the line is here for anyone who already has the tools.</p>
+</div></section>
+
+<section class="ah-band" aria-label="Install the skills"><div class="ah-band-inner">
+  <p class="ah-label">The skills this lesson uses</p>
+  <div class="ah-cardgrid">
+    <a href="https://github.com/Reid-Surmeier/ai-lessons/blob/main/skills/telephone/SKILL.md"><p class="t">$telephone</p><p class="d">Runs the lesson: check, grill, brief, build, publish. Lives in this repository.</p></a>
+    <a href="https://www.aihero.dev/skills-grill-me"><p class="t">$grill-me</p><p class="d">Matt Pocock's relentless interview. The telephone skill calls it for the questioning.</p></a>
+    <a href="https://www.aihero.dev/skills-ask-matt"><p class="t">$ask-matt</p><p class="d">A router over the rest of the set. Ask it which skill fits a situation.</p></a>
+  </div>
+</div></section>
+
+<section class="ah-band" aria-label="Lesson cycle"><div class="ah-band-inner ah-band-cols">
+  <div>
+    <p class="ah-label">Lesson cycle</p>
+    <div class="ah-cycle">
+      <div><p class="ah-label">Previous lesson</p><p class="name dim">None. This is the first.</p></div>
+      <div class="here"><p class="ah-label">You are here</p><p class="name">The Telephone Website</p></div>
+      <div><p class="ah-label">Next lesson</p><p class="name dim">Orca worktrees · soon</p></div>
+    </div>
+  </div>
+  <div>
+    <p class="ah-label">Where this fits</p>
+    <ol class="ah-track">
+      <li aria-current="step"><a href="./"><span class="dot"></span>Getting Started</a></li>
+      <li><a href="../"><span class="dot"></span>Working in parallel</a></li>
+      <li><a href="../"><span class="dot"></span>Shipping</a></li>
+    </ol>
+  </div>
+</div></section>
+
+<footer class="ah-footer">AI Lessons · Reid Surmeier · Layout after <a href="https://www.aihero.dev/">aihero.dev</a>.</footer>
+<script src="../assets/ah.js"></script>
+</body></html>

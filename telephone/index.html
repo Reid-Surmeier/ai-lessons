@@ -29,7 +29,7 @@
 <thead><tr><th>Account</th><th>Why</th><th>Cost</th></tr></thead>
 <tbody>
 <tr><td><a href="https://github.com/signup">GitHub</a></td><td>Hosts your finished site for free. Your username becomes part of the address, so keep it short.</td><td>Free</td></tr>
-<tr><td><a href="https://chatgpt.com/">ChatGPT</a></td><td>Codex signs in with it. OpenAI's pricing page lists Codex in the CLI on the Plus plan and up. It does not confirm the Free plan works for the CLI, so if sign-in fails on Free, the fix is Plus.</td><td>Plus is $20/month</td></tr>
+<tr><td><a href="https://chatgpt.com/">ChatGPT Plus</a></td><td>Codex signs in with it, and the CLI needs the Plus plan. A free account is not enough. Subscribe before class; you can cancel after.</td><td>$20/month</td></tr>
 </tbody></table></div></div>
 
 <h2 id="set-up"><a href="#set-up">Set up your computer</a></h2>
@@ -61,7 +61,7 @@
 <tr><td>1 · GitHub account</td><td>Opens the signup page if you need one.</td><td>Sign up, verify the email, type your username.</td></tr>
 <tr><td>2 · Tools</td><td>Installs git, the GitHub CLI, and Node. Mac gets Homebrew first.</td><td>Type your name and email once for git.</td></tr>
 <tr><td>3 · Codex</td><td>Installs Codex with OpenAI's installer.</td><td>Nothing.</td></tr>
-<tr><td>4 · Sign in to Codex</td><td>Opens a browser window.</td><td>Choose "Sign in with ChatGPT" and approve.</td></tr>
+<tr><td>4 · Sign in to Codex</td><td>Opens a browser window.</td><td>Choose "Sign in with ChatGPT" with your Plus account and approve.</td></tr>
 <tr><td>5 · GitHub token</td><td>Opens the token page.</td><td>Follow the on-screen clicks, paste the token. See below.</td></tr>
 <tr><td>6 · Skills</td><td>Installs Matt Pocock's skills and this lesson's skill.</td><td>Nothing.</td></tr>
 <tr><td>7 · Check</td><td>Green ticks for every tool, the sign-in, and the three skills.</td><td>If anything is red, re-run the wizard.</td></tr>
@@ -127,8 +127,8 @@
 <h2 id="common-questions"><a href="#common-questions">Common questions</a></h2>
 <h3>The wizard says a tool is "not found" right after installing it</h3>
 <p>New tools register with the terminal only when it opens. Close the window, open a new one, run the wizard again. It skips finished stages.</p>
-<h3>Codex sign-in fails on a Free ChatGPT account</h3>
-<p>OpenAI's pricing page names the CLI under Plus. Upgrade, or sign in with an API key if the instructor hands one out.</p>
+<h3>Codex sign-in fails</h3>
+<p>Almost always a free ChatGPT account. The CLI needs Plus. Upgrade at chatgpt.com, then run <code>codex login</code> again.</p>
 <h3>The agent asks me something the paper does not answer</h3>
 <p>Answer anyway, starting with <code>guess:</code>. That is the game. A guess you log is data; a guess you hide is a bug.</p>
 <h3>It asks too many questions</h3>

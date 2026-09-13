@@ -79,8 +79,8 @@ else {
 
 # ── 5. ChatGPT sign-in
 Stage 'Sign Codex in with ChatGPT'
-Say 'Codex signs in with a ChatGPT account. The lesson page lists which plans work.'
-if (-not (Confirm2 'Do you already have a ChatGPT account?')) { OpenUrl 'https://chatgpt.com/'; Step 'Create an account, then come back here.'; Pause2 }
+Say 'Codex signs in with a ChatGPT account on the Plus plan ($20/month). A free account will not work.'
+if (-not (Confirm2 'Do you already have ChatGPT Plus?')) { OpenUrl 'https://chatgpt.com/'; Step 'Create an account, then upgrade to Plus (profile menu -> Upgrade plan). Come back when it says Plus.'; Pause2 }
 Say "A browser window will open. Choose 'Sign in with ChatGPT' and approve."
 Pause2 'Press Enter to start codex login'
 codex login

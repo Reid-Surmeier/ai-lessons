@@ -256,10 +256,10 @@ fi
 
 # ── 5. ChatGPT sign-in ────────────────────────────────────────────────────
 stage "Sign Codex in with ChatGPT"
-say "Codex signs in with a ChatGPT account. The lesson page lists which plans work."
-if confirm "Do you already have a ChatGPT account?"; then :; else
+say "Codex signs in with a ChatGPT account on the Plus plan (\$20/month). A free account will not work."
+if confirm "Do you already have ChatGPT Plus?"; then :; else
   open_url "https://chatgpt.com/"
-  step "Create an account, then come back here."
+  step "Create an account, then upgrade to Plus (profile menu → Upgrade plan). Come back when it says Plus."
   pause
 fi
 say "A browser window will open. Choose 'Sign in with ChatGPT' and approve."

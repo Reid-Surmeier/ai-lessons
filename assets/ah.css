@@ -118,7 +118,8 @@ code.ah-code-inline,.ah-prose code{font-family:var(--ah-mono);color:var(--foregr
 .ah-track .dot{width:7px;height:7px;border-radius:50%;background:#14161a33;flex:none}
 .ah-track [aria-current] a{color:var(--primary)}
 .ah-track [aria-current] .dot{background:var(--primary)}
-.ah-band-cols{display:grid;gap:36px}
+.ah-band-cols{display:grid;gap:36px;grid-template-columns:minmax(0,1fr)}
+.ah-band-cols>*{min-width:0}
 @media(min-width:901px){.ah-band-cols{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}}
 .ah-footer{padding:28px 24px;font-size:13px;color:var(--ah-fg-subtle);max-width:1240px;margin:0 auto}
 .ah-footer a{color:inherit}

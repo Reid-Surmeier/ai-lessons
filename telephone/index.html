@@ -67,6 +67,19 @@
 <tr><td>7 · Check</td><td>Green ticks for every tool, the sign in, and the three skills.</td><td>If anything is red, run the wizard again.</td></tr>
 </tbody></table></div></div>
 
+<h2 id="walkthrough"><a href="#walkthrough">The wizard, screen by screen</a></h2>
+<p>These are the Mac wizard's screens, captured from a run. Each stage clears the screen, so you only ever see the current step. Windows shows the same stages with the same words.</p>
+<figure class="ah-figure"><img src="img/wizard-00-banner.png" alt="The opening screen" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">The opening screen</span>It says how many stages there are and that you can stop and run it again later. Press Return.</figcaption></figure>
+<figure class="ah-figure"><img src="img/wizard-01-github.png" alt="Stage 1, GitHub account" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">Stage 1, GitHub account</span>The wizard asks whether you have a GitHub account. Type n and it opens the signup page. After you verify your email, come back, press Return, and type the username you chose. The wizard remembers it in a small settings file so you never type it again.</figcaption></figure>
+<figure class="ah-figure"><img src="img/wizard-02-homebrew.png" alt="Stage 2, Homebrew" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">Stage 2, Homebrew</span>The wizard checks for Homebrew. On a fresh Mac you will not see this line. Instead the installer runs, asks for your password, and downloads Apple's command line tools, which takes a while. This screen shows what it looks like when Homebrew is already there.</figcaption></figure>
+<figure class="ah-figure"><img src="img/wizard-03-tools.png" alt="Stage 3, the tools" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">Stage 3, the tools</span>git, gh and Node install through Homebrew and the wizard prints the three versions. Then it asks for your name and the email you used for GitHub. Those go on every change you publish.</figcaption></figure>
+<figure class="ah-figure"><img src="img/wizard-04-codex.png" alt="Stage 4, Codex" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">Stage 4, Codex</span>Codex installs with OpenAI's own installer. A fresh Mac shows the installer's lines here instead of the already installed note.</figcaption></figure>
+<figure class="ah-figure"><img src="img/wizard-05-chatgpt.png" alt="Stage 5, sign in to Codex" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">Stage 5, sign in to Codex</span>If you do not have ChatGPT Plus yet, the wizard opens chatgpt.com and waits. Then it starts codex login. A browser tab opens and asks you to sign in with ChatGPT. Approve it, and the terminal says Successfully logged in.</figcaption></figure>
+<figure class="ah-figure"><img src="img/wizard-06-token.png" alt="Stage 6, the GitHub token" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">Stage 6, the GitHub token</span>The wizard opens GitHub's new token page and lists exactly what to set: the name, 30 days, all repositories, and the three permissions Administration, Contents and Pages at Read and write. GitHub shows the token once. Copy it, paste it at the prompt, and press Return. Nothing appears while you paste. gh then reports that you are logged in and shows the token masked with stars.</figcaption></figure>
+<figure class="ah-figure"><img src="img/wizard-07-skills.png" alt="Stage 7, the skills" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">Stage 7, the skills</span>Two skill sets install. Matt Pocock's set brings grill-me and grilling. This lesson's set brings telephone. Each line names the skill and where it landed.</figcaption></figure>
+<figure class="ah-figure"><img src="img/wizard-08-check.png" alt="Stage 8, the check" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">Stage 8, the check</span>Eight green ticks means you are ready for lesson day. A red cross names what is missing. Run the wizard again and it fills in only that part.</figcaption></figure>
+<figure class="ah-figure"><img src="img/wizard-09-done.png" alt="The closing screen" loading="lazy" width="905"><figcaption><span class="ah-label" style="display:block;margin:0 0 4px">The closing screen</span>The three values it remembered are your username, name and email, none of them secret. The token is not in that file. gh keeps it in your keychain.</figcaption></figure>
+
 <h2 id="token"><a href="#token">The GitHub token</a></h2>
 <p>The agent will create a repository and switch on GitHub Pages for you. GitHub lets you mint a token that allows exactly that and nothing else, and that dies after 30 days. The wizard opens the page; here is what it asks you to set.</p>
 <div class="ah-table"><div class="scroll"><table>
@@ -161,6 +174,7 @@
     <li><a href="#what-you-will-do">What you'll do</a></li>
     <li><a href="#before-class">Before class</a></li>
     <li><a href="#set-up">Set up your computer</a></li>
+    <li><a href="#walkthrough">Screen by screen</a></li>
     <li><a href="#token">The GitHub token</a></li>
     <li><a href="#check">Check it worked</a></li>
     <li><a href="#worksheet">The worksheet</a></li>
@@ -175,7 +189,7 @@
 <section class="ah-band" aria-label="Install this skill"><div class="ah-band-inner">
   <p class="ah-label">Install this lesson's skill</p>
   <div class="ah-cmd"><span class="dollar">$</span><code>npx skills@latest add Reid-Surmeier/ai-lessons -a codex -g</code><button type="button" aria-label="Copy"></button></div>
-  <p class="ah-cmd-note">Then type <code>$telephone</code> in Codex. The setup wizard runs this for you; the line is here for anyone who already has the tools.</p>
+  <p class="ah-cmd-note">This line needs Node, which a fresh Mac or PC does not have. The setup wizard installs Node and runs this for you. Use the line only if you set things up by hand and already have Node. Then type <code>$telephone</code> in Codex.</p>
 </div></section>
 
 <section class="ah-band" aria-label="Install the skills"><div class="ah-band-inner">

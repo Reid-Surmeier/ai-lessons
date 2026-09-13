@@ -135,3 +135,7 @@ code.ah-code-inline,.ah-prose code{font-family:var(--ah-mono);color:var(--foregr
 .ah-steps p{margin:0 0 8px;font-size:14.5px}
 .ah-steps .ah-cmd{margin-top:8px}
 kbd{font-family:var(--ah-mono);font-size:.8em;border:1px solid var(--ah-line-strong);border-bottom-width:2px;border-radius:4px;padding:1px 6px;background:var(--background)}
+/* figures */
+.ah-figure{margin:0 0 28px}
+.ah-figure img{display:block;width:100%;height:auto;border:1px solid var(--border);border-radius:10px;background:#e9eaee}
+.ah-figure figcaption{font-size:14px;line-height:1.6;color:var(--ah-fg-muted);margin-top:10px}

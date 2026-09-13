@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Telephone Website · Ghost in the Machine</title>
 <meta name="description" content="Draw a website on paper, hand it to a stranger, and watch an agent build what they read.">
-<link rel="stylesheet" href="../assets/ah.css">
+<link rel="stylesheet" href="../assets/ah.css?v=4">
 </head><body>
 <header class="ah-header">
   <a class="ah-brand" href="../"><span class="mark"></span><span>Ghost in the <span class="mono">Machine</span></span></a>
@@ -71,7 +71,7 @@
 <p>Each stage clears the screen, so you only ever see the current step: a title with the stage number, a line or two on what is happening, the page it opened for you, and a prompt. This is stage 6, the one people ask about most.</p>
 <figure>
 <img src="img/wizard-token.png" alt="Terminal showing stage 6 of the setup wizard, the GitHub token" width="860" height="417">
-<figcaption>Stage 6. The wizard opens GitHub's new token page and lists what to set: the name, 30 days, all repositories, and the three permissions Administration, Contents and Pages at Read and write. GitHub shows the token once. Copy it, paste it at the prompt, press Return. Nothing appears while you paste. gh then reports that you are logged in and shows the token masked with stars. Windows shows the same stages with the same words.</figcaption>
+<figcaption>Stage 6. The wizard opens GitHub's new token page and lists what to set: the name, 30 days, all repositories, and the three permissions Administration, Contents and Pages at Read and write. GitHub shows the token once. Copy it, paste it at the prompt, press Return. Nothing appears while you paste. gh then reports that you are logged in and shows the token masked with stars. If GitHub rejects the paste, the wizard says so and lets you try again. Windows shows the same stages with the same words.</figcaption>
 </figure>
 
 <h2 id="token"><a href="#token">The GitHub token</a></h2>
@@ -136,6 +136,10 @@
 <p>New tools register with the terminal only when it opens. Close the window, open a new one, run the wizard again. It skips finished stages.</p>
 <h3>Codex sign in fails</h3>
 <p>Almost always a free ChatGPT account. The CLI needs Plus. Upgrade at chatgpt.com, then run <code>codex login</code> again.</p>
+<h3>The wizard says GitHub did not accept the token</h3>
+<p>The paste was empty or cut short, the token was copied before you clicked Generate token, or you made a classic token instead of a fine grained one. The wizard lets you paste three times. Go back to the GitHub tab, generate a fresh token, copy the whole thing, and paste again. If it still fails, ask for help and run the wizard again later. It skips the stages that are done.</p>
+<h3>Codex says it cannot reach GitHub, or the agent's push fails</h3>
+<p>Open a terminal and type <code>gh auth status</code>. If it does not show your account, the token stage did not finish, or the token expired after its 30 days. Make a new token on GitHub, run the wizard again, and paste it at stage 6.</p>
 <h3>The agent asks me something the paper does not answer</h3>
 <p>Answer anyway, starting with <code>guess:</code>. Afterwards we compare the guesses with what the author meant, so a guess you wrote down is useful and a guess you hid just looks like a mistake.</p>
 <h3>It asks too many questions</h3>
@@ -215,5 +219,5 @@
 </div></section>
 
 <footer class="ah-footer">Ghost in the Machine · AI Studio · RISD · Marco Rosso (<a href="mailto:mroso@risd.edu">mroso@risd.edu</a>) and Reid Surmeier (<a href="mailto:rsurmeie@risd.edu">rsurmeie@risd.edu</a>)</footer>
-<script src="../assets/ah.js"></script>
+<script src="../assets/ah.js?v=4"></script>
 </body></html>

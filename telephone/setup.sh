@@ -277,14 +277,20 @@ step "Repository access: All repositories."
 step "Permissions → Repository permissions: set these three to Read and write:"
 step "   Administration · Contents · Pages    (Metadata turns on by itself)"
 step "Click Generate token, then copy it. It starts with github_pat_."
-ask_secret GITHUB_TOKEN "Paste the token (nothing will show as you paste):"
-if printf '%s' "$GITHUB_TOKEN" | gh auth login --with-token; then
-  gh auth setup-git
-  gh auth status 2>&1 | sed 's/^/  /'
-else
-  warn "gh could not use that token. Re-run the wizard and paste it again."
-  exit 1
-fi
+for attempt in 1 2 3; do
+  ask_secret GITHUB_TOKEN "Paste the token (nothing will show as you paste):"
+  GITHUB_TOKEN="${GITHUB_TOKEN//[[:space:]]/}"
+  if [[ -n "$GITHUB_TOKEN" ]] && printf '%s' "$GITHUB_TOKEN" | gh auth login --with-token 2>/dev/null; then
+    gh auth setup-git
+    gh auth status 2>&1 | sed 's/^/  /'
+    break
+  fi
+  warn "GitHub did not accept that token (try $attempt of 3)."
+  say "Usual causes: the paste was empty or cut short, the token was copied before you clicked"
+  say "Generate token, or it is a classic token instead of a fine-grained one."
+  say "Go back to the GitHub tab, generate a fresh token, copy it, and paste again."
+  [[ $attempt -eq 3 ]] && { warn "Still no luck. Ask for help, then run the wizard again; it skips what is done."; exit 1; }
+done
 unset GITHUB_TOKEN
 
 # ── 7. Skills ─────────────────────────────────────────────────────────────

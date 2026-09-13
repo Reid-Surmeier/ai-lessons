@@ -1,27 +1,28 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Telephone Website</title>
+<title>The Telephone Website · Ghost in the Machine</title>
 <meta name="description" content="Draw a website on paper, hand it to a stranger, and watch an agent build what they read.">
 <link rel="stylesheet" href="../assets/ah.css">
 </head><body>
 <header class="ah-header">
-  <a class="ah-brand" href="../"><span class="mark"></span><span><span class="mono">AI</span> Lessons</span></a>
+  <a class="ah-brand" href="../"><span class="mark"></span><span>Ghost in the <span class="mono">Machine</span></span></a>
   <nav class="ah-nav" aria-label="Primary"><a href="../">Lessons</a><a href="worksheet.html">Worksheet</a><a href="https://github.com/Reid-Surmeier/ai-lessons">Source</a></nav>
 </header>
 
 <div class="ah-shell"><div class="ah-grid">
 <article class="ah-article">
-  <p class="ah-kicker"><span>01 / AI Lessons</span><span class="sep">·</span><span>20 min read</span><span class="sep">·</span><span>Updated Sep 13, 2026</span></p>
+  <p class="ah-kicker"><span>RISD · Ghost in the Machine · AI Studio</span><span class="sep">·</span><span>Lesson 01</span><span class="sep">·</span><span>20 min read</span><span class="sep">·</span><span>Updated Sep 13, 2026</span></p>
   <h1 class="ah-h1"><span class="thumb">☎</span><span>The Telephone Website</span></h1>
-  <p class="ah-sub">Draw a website on paper. Hand it to a stranger. Watch an agent build what they read.</p>
-  <p class="ah-byline"><span class="avatar"></span>Reid Surmeier</p>
+  <p class="ah-sub">Draw a website on paper, hand it to a stranger, and watch an agent build what they read.</p>
+  <p class="ah-byline"><span class="avatar"></span><span>Marco Rosso, CTC Faculty · <a href="mailto:mroso@risd.edu">mroso@risd.edu</a></span></p>
+  <p class="ah-byline" style="margin-top:10px"><span class="avatar"></span><span>Reid Surmeier, TA · <a href="mailto:rsurmeie@risd.edu">rsurmeie@risd.edu</a></span></p>
 
 <div class="ah-prose">
 
 <h2 id="what-you-will-do"><a href="#what-you-will-do">What you'll do</a></h2>
 <p>Everyone fills in a one-page worksheet by hand: a website that does not exist yet, its pages, its colors, a drawing of its homepage. Then the sheets get swapped. You end up holding someone else's site, and they end up holding yours.</p>
 <p>You open a coding agent called <strong>Codex</strong> and type <code>$telephone</code>. The agent interviews you about the sheet, in rounds, until nothing is left to guess. Every time the paper has no answer, you say so and guess out loud. The agent builds the site, publishes it to a real address on GitHub Pages, and hands back the link plus the list of every guess you made.</p>
-<p>The gap between what the author drew and what got built is the point. It is the same gap that opens every time you describe something to an agent, and this lesson makes it visible.</p>
+<p>The gap between what the author drew and what got built is what we look at afterwards. The same gap opens every time you describe something to an agent. This lesson makes it big enough to see.</p>
 
 <h2 id="before-class"><a href="#before-class">Before class: two accounts</a></h2>
 <p>The setup wizard below walks you through both, but they need an email you can check, so do them where you can read your mail.</p>
@@ -47,7 +48,7 @@
 
 <div data-os-panel="windows" hidden>
 <h3>Open PowerShell</h3>
-<p>Press the <kbd>Windows</kbd> key, type <strong>PowerShell</strong>, press <kbd>Enter</kbd>. A blue or black window with a blinking cursor appears. Anything you paste there runs when you press <kbd>Enter</kbd>. Windows 11 is recommended; Windows 10 works but is best-effort.</p>
+<p>Press the <kbd>Windows</kbd> key, type <strong>PowerShell</strong>, press <kbd>Enter</kbd>. A blue or black window with a blinking cursor appears. Anything you paste there runs when you press <kbd>Enter</kbd>. Windows 11 is recommended. Windows 10 usually works, but OpenAI only supports it on a best effort basis.</p>
 <h3>Download and run the wizard</h3>
 <p>Copy this line, paste it into PowerShell, press <kbd>Enter</kbd>.</p>
 <div class="ah-cmd"><span class="dollar">&gt;</span><code>irm https://ai.reidsurmeier.wtf/telephone/setup.ps1 -OutFile setup.ps1; powershell -ExecutionPolicy Bypass -File .\setup.ps1</code><button type="button" aria-label="Copy"></button></div>
@@ -92,12 +93,12 @@
 </tbody></table></div></div>
 
 <h2 id="worksheet"><a href="#worksheet">The worksheet</a></h2>
-<p>Print it, or draw the same boxes on any sheet. Fill it in by hand, in pen, in about ten minutes. It asks for nine things: the site's name, who it is for, one sentence on what it is, three colors, a font mood, the list of pages, one thing that must be on it and one that must never be, a drawing of the homepage, and a drawing of one inner page.</p>
+<p>Print it, or draw the same boxes on any sheet. Fill it in by hand, in pen. Ten minutes is enough. It asks for nine things: the site's name, who it is for, one sentence on what it is, three colors, a font mood, the list of pages, one thing that must be on it and one that must never be, a drawing of the homepage, and a drawing of one inner page.</p>
 <a class="ah-btn" href="worksheet.html">Open the worksheet</a>
 <p style="margin-top:20px">Draw more than you write. The agent never sees the paper. Everything reaches it through the person holding your sheet, so a labeled box beats a paragraph.</p>
 
 <h2 id="the-swap"><a href="#the-swap">The swap</a></h2>
-<p>Fold your sheet once. Hand it to someone you did not sit next to. Take one back. From this moment the rules are:</p>
+<p>Fold your sheet once, hand it to someone you did not sit next to, and take one back. From then on:</p>
 <ul>
 <li>The author is not available. Do not walk over and ask.</li>
 <li>You answer the agent from the paper. When the paper has no answer, you still answer, but you start with <code>guess:</code>.</li>
@@ -122,7 +123,7 @@
 <li><strong>Build.</strong> Plain HTML and CSS, the pages the paper listed, the colors it named, the layout it drew. It opens the result so you can compare it to the sheet.</li>
 <li><strong>Publish.</strong> It creates the repository under your GitHub account, pushes, switches on Pages, and waits until the address answers. Then it prints the link and the guesses.</li>
 </ol>
-<p>Keep the paper and the link together. That pair is what you bring to the room.</p>
+<p>Keep the paper and the link together. You will show them side by side.</p>
 
 <h2 id="common-questions"><a href="#common-questions">Common questions</a></h2>
 <h3>The wizard says a tool is "not found" right after installing it</h3>
@@ -130,13 +131,13 @@
 <h3>Codex sign-in fails</h3>
 <p>Almost always a free ChatGPT account. The CLI needs Plus. Upgrade at chatgpt.com, then run <code>codex login</code> again.</p>
 <h3>The agent asks me something the paper does not answer</h3>
-<p>Answer anyway, starting with <code>guess:</code>. That is the game. A guess you log is data; a guess you hide is a bug.</p>
+<p>Answer anyway, starting with <code>guess:</code>. Afterwards we compare the guesses with what the author meant, so a guess you wrote down is useful and a guess you hid just looks like a mistake.</p>
 <h3>It asks too many questions</h3>
 <p>Answer all of them. The interview stops on its own when the design has no open branches. Short answers are fine.</p>
 <h3>The link shows a 404</h3>
 <p>GitHub Pages takes about a minute to build the first time. The agent waits for it; if you checked early, reload.</p>
 <h3>Can I improve the site after?</h3>
-<p>After the presentation, yes. Before it, no. The point is the fidelity of one pass through one stranger.</p>
+<p>After the class has seen it, yes. Before that, no. We want to see what survives one pass through one stranger, so keep the first version as it came out.</p>
 
 <h2 id="its-working-if"><a href="#its-working-if">It's working if</a></h2>
 <ul>
@@ -148,8 +149,8 @@
 
 <aside class="ah-callout">
   <span class="ah-label primary" style="margin:0">AI Lessons · Next</span>
-  <h3>Orca: many agents, many folders, one project.</h3>
-  <p>Lesson 02 takes the same tools and adds Orca, which manages a worktree per task so several agents can work on one repository without stepping on each other. Coming soon.</p>
+  <h3>Orca: several agents on one project at once.</h3>
+  <p>Lesson 02 keeps the same tools and adds Orca, which gives each task its own folder so several agents can work on one repository without stepping on each other. Coming soon.</p>
 </aside>
 
 </div>
@@ -206,6 +207,6 @@
   </div>
 </div></section>
 
-<footer class="ah-footer">AI Lessons · Reid Surmeier · Layout after <a href="https://www.aihero.dev/">aihero.dev</a>.</footer>
+<footer class="ah-footer">Ghost in the Machine · AI Studio · RISD · Marco Rosso (<a href="mailto:mroso@risd.edu">mroso@risd.edu</a>) and Reid Surmeier (<a href="mailto:rsurmeie@risd.edu">rsurmeie@risd.edu</a>) · Layout after <a href="https://www.aihero.dev/">aihero.dev</a>.</footer>
 <script src="../assets/ah.js"></script>
 </body></html>

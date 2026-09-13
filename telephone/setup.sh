@@ -221,8 +221,9 @@ stage "Homebrew (the Mac package installer)"
 if command -v brew >/dev/null 2>&1; then
   note "Homebrew is already installed."
 else
-  say "Homebrew installs developer tools with one command. It will ask for your Mac password"
-  say "and may install Apple's command line tools first. That can take several minutes."
+  say "Most Macs do not have Homebrew, the installer developer tools use. Installing it now."
+  say "It asks for your Mac login password (nothing shows while you type), then downloads"
+  say "Apple's command line tools. That can take five to ten minutes. Leave this window open."
   pause "Press Enter to install Homebrew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </dev/tty
   _refresh_path

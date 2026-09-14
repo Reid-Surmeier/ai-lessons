@@ -27,12 +27,39 @@ function AskSecret($prompt) {
 }
 function RefreshPath { $env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [Environment]::GetEnvironmentVariable('Path','User') }
 function Has($cmd) { [bool](Get-Command $cmd -ErrorAction SilentlyContinue) }
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$Dl = Join-Path $env:TEMP 'telephone-lesson'; New-Item -ItemType Directory -Force -Path $Dl | Out-Null
+function Get-Installer($url, $name) { $f = Join-Path $Dl $name; Say "downloading $name"; Invoke-WebRequest -Uri $url -OutFile $f -UseBasicParsing; return $f }
+function Run-Installer($file, $arguments) { Say "installing $(Split-Path $file -Leaf) (Windows may ask you to approve)"; if ($file -like '*.msi') { Start-Process msiexec -ArgumentList "/i `"$file`" /qn /norestart" -Wait } else { Start-Process $file -ArgumentList $arguments -Wait } }
+# Direct installers, used only when winget is not on this PC. Official sources only.
+function Install-Direct($tool) {
+  switch ($tool) {
+    'git'  { $r = Invoke-RestMethod 'https://api.github.com/repos/git-for-windows/git/releases/latest' -UseBasicParsing
+             $u = ($r.assets | Where-Object { $_.name -like 'Git-*-64-bit.exe' } | Select-Object -First 1).browser_download_url
+             Run-Installer (Get-Installer $u 'git-setup.exe') @('/VERYSILENT','/NORESTART') }
+    'gh'   { $r = Invoke-RestMethod 'https://api.github.com/repos/cli/cli/releases/latest' -UseBasicParsing
+             $u = ($r.assets | Where-Object { $_.name -like 'gh_*_windows_amd64.msi' } | Select-Object -First 1).browser_download_url
+             Run-Installer (Get-Installer $u 'gh-setup.msi') }
+    'node' { $list = Invoke-RestMethod 'https://nodejs.org/dist/index.json' -UseBasicParsing
+             $v = ($list | ForEach-Object { $_ } | Where-Object { $_.lts } | Select-Object -First 1).version
+             Run-Installer (Get-Installer "https://nodejs.org/dist/$v/node-$v-x64.msi" 'node-setup.msi') }
+  }
+}
+function Install-Tool($tool, $wingetId) {
+  if (Has $tool) { Note "$tool is already installed."; return }
+  if (Has winget) {
+    winget install --id $wingetId -e --accept-package-agreements --accept-source-agreements --silent
+    if ($LASTEXITCODE -in 0, -1978335189) { RefreshPath; if (Has $tool) { return } }
+    Note "winget could not install $tool; using the official installer instead."
+  }
+  Install-Direct $tool
+  RefreshPath
+}
 
 Clear-Host
 Write-Host "`n  The Telephone Website: set up Windows" -ForegroundColor Blue
 Note "$Total stages. You drive the browser; this wizard says exactly what to do."
 Note "Stop any time with Ctrl-C and re-run later: it skips what is already done."
-if (-not (Has winget)) { Warn "winget is missing. Install 'App Installer' from the Microsoft Store, then re-run."; exit 1 }
 Pause2 'Ready to start?'
 
 # -- 1. GitHub account
@@ -48,13 +75,12 @@ $null = Ask 'GITHUB_USERNAME' 'Type your GitHub username exactly:'
 
 # -- 2. git, gh, node
 Stage 'git, GitHub CLI, Node'
-Say 'git tracks files, gh talks to GitHub, Node runs the skill installer. winget may ask you to approve.'
-foreach ($p in 'Git.Git','GitHub.cli','OpenJS.NodeJS.LTS') {
-  winget install --id $p -e --accept-package-agreements --accept-source-agreements --silent
-  if ($LASTEXITCODE -notin 0, -1978335189) { Warn "winget returned $LASTEXITCODE for $p" }   # -1978335189 = already installed
-}
-RefreshPath
-foreach ($c in 'git','gh','node') { if (-not (Has $c)) { Warn "$c not found yet. Close this window, open a new PowerShell, re-run the wizard."; exit 1 } }
+Say 'git tracks files, gh talks to GitHub, Node runs the skill installer. Nothing else is needed first.'
+Say 'Windows may show a blue approval box for each one. Click Yes.'
+Install-Tool 'git'  'Git.Git'
+Install-Tool 'gh'   'GitHub.cli'
+Install-Tool 'node' 'OpenJS.NodeJS.LTS'
+foreach ($c in 'git','gh','node') { if (-not (Has $c)) { Warn "$c is installed but this window cannot see it yet. Close this window, open a new PowerShell, run the same line again. It skips what is done."; exit 1 } }
 Note ((git --version) + " | node " + (node --version))
 $name  = Ask 'GIT_NAME'  'Your name, as it should appear on your work (e.g. Ada Lovelace):'
 $email = Ask 'GIT_EMAIL' 'The email you used for GitHub:'

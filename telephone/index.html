@@ -48,6 +48,7 @@
 <div data-os-panel="windows" hidden>
 <h3>Open PowerShell</h3>
 <p>Press the <kbd>Windows</kbd> key, type <strong>PowerShell</strong>, press <kbd>Enter</kbd>. A blue or black window with a blinking cursor appears. Anything you paste there runs when you press <kbd>Enter</kbd>. Windows 11 is recommended. Windows 10 usually works, but OpenAI only supports it on a best effort basis.</p>
+<p>Nothing needs to be installed first. Windows ships with its own installer, winget, and the wizard uses it when it is there. On a PC without it, the wizard downloads the official Git, GitHub CLI and Node installers itself and runs them quietly. Either way you only click Yes on the approval boxes.</p>
 <h3>Download and run the wizard</h3>
 <p>Copy this line, paste it into PowerShell, press <kbd>Enter</kbd>.</p>
 <div class="ah-cmd"><span class="dollar">&gt;</span><code>irm https://ai.reidsurmeier.wtf/telephone/setup.ps1 -OutFile setup.ps1; powershell -ExecutionPolicy Bypass -File .\setup.ps1</code><button type="button" aria-label="Copy"></button></div>
@@ -59,7 +60,7 @@
 <thead><tr><th>Stage</th><th>What happens</th><th>You do</th></tr></thead>
 <tbody>
 <tr><td>1 · GitHub account</td><td>Opens the signup page if you need one.</td><td>Sign up, verify the email, type your username.</td></tr>
-<tr><td>2 · Tools</td><td>Installs git, the GitHub CLI, and Node. Mac gets Homebrew first.</td><td>Type your name and email once for git.</td></tr>
+<tr><td>2 · Tools</td><td>Installs git, the GitHub CLI, and Node. Mac gets Homebrew first. Windows uses winget or, without it, the official installers.</td><td>Click Yes on approval boxes. Type your name and email once for git.</td></tr>
 <tr><td>3 · Codex</td><td>Installs Codex with OpenAI's installer.</td><td>Nothing.</td></tr>
 <tr><td>4 · Sign in to Codex</td><td>Opens a browser window.</td><td>Choose "Sign in with ChatGPT" with your Plus account and approve.</td></tr>
 <tr><td>5 · GitHub token</td><td>Opens the token page.</td><td>Follow the clicks on screen, paste the token. See below.</td></tr>
